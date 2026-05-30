@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sales Report</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>📈 Sales Report</h1>
+        <form method="GET">
+            <select name="days" onchange="this.form.submit()">
+                <option value="7" {% if days==7 %}selected{% endif %}>7 days</option>
+                <option value="30" {% if days==30 %}selected{% endif %}>30 days</option>
+                <option value="90" {% if days==90 %}selected{% endif %}>90 days</option>
+            </select>
+        </form>
+        <div class="stats">
+            <div class="stat-card"><h3>Total</h3><p>${{ total }}</p></div>
+            <div class="stat-card"><h3>Transactions</h3><p>{{ bills|length }}</p></div>
+        </div>
+        <h3>By Staff</h3>
+        <table>
+            <thead><tr><th>Staff</th><th>Total</th></tr></thead>
+            <tbody>{% for staff, amount in staff_sales.items() %}<tr><td>{{ staff }}</td><td>${{ amount }}</td></tr>{% endfor %}</tbody>
+        </table>
+        <a href="/" class="btn">← Back</a>
+    </div>
+</body>
+</html>
