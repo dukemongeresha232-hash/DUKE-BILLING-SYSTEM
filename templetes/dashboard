@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📶 WiFi Billing</h1>
+            <div><span>👋 {{ username }}</span> <a href="/logout" class="btn-small">Logout</a></div>
+        </div>
+        <div class="stats">
+            <div class="stat-card"><h3>💰 Total</h3><p>${{ total_revenue }}</p></div>
+            <div class="stat-card"><h3>📅 Today</h3><p>${{ today_revenue }}</p></div>
+            <div class="stat-card"><h3>👥 Active</h3><p>{{ active_count }}</p></div>
+            <div class="stat-card"><h3>🧾 Bills</h3><p>{{ total_bills }}</p></div>
+        </div>
+        <div class="menu">
+            <a href="/new-bill" class="btn btn-primary">➕ New Bill</a>
+            <a href="/active-users" class="btn btn-secondary">👤 Active Users</a>
+            <a href="/sales-report" class="btn">📈 Report</a>
+            {% if session.role == 'admin' %}
+                <a href="/users" class="btn">👥 Staff</a>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
