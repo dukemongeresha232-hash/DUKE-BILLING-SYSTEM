@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Receipt</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container receipt">
+        <h1>✅ Access Generated</h1>
+        {% if bill.qr_code %}
+        <div style="text-align:center"><img src="{{ bill.qr_code }}" width="150"></div>
+        {% endif %}
+        <div class="code-box">
+            <h2>🔑 WiFi Code</h2>
+            <p class="code">{{ bill.code }}</p>
+        </div>
+        <table style="width:100%">
+            <tr><td><strong>Customer</strong></td><td>{{ bill.customer }}</td></tr>
+            <tr><td><strong>Plan</strong></td><td>{{ bill.type }}</td></tr>
+            {% if bill.type == 'Time-based' %}
+            <tr><td><strong>Hours</strong></td><td>{{ bill.hours }}</td></tr>
+            <tr><td><strong>Expires</strong></td><td>{{ bill.expiry }}</td></tr>
+            {% else %}
+            <tr><td><strong>Data</strong></td><td>{{ bill.data_mb }} MB</td></tr>
+            {% endif %}
+            <tr><td><strong>Amount</strong></td><td>${{ bill.price }}</td></tr>
+        </table>
+        <div class="menu">
+            <button onclick="window.print()" class="btn">🖨 Print</button>
+            <a href="/" class="btn">🏠 Home</a>
+            <a href="/new-bill" class="btn btn-primary">➕ New</a>
+        </div>
+    </div>
+</body>
+</html>
