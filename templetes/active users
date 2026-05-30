@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Active Users</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>👥 Active Users</h1>
+        {% if users %}
+        <table>
+            <thead><tr><th>Code</th><th>Customer</th><th>Expiry/Data</th><th></th></tr></thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td><strong>{{ user.code }}</strong></td>
+                    <td>{{ user.customer }}</td>
+                    <td>{% if user.type == 'time' %}Expires: {{ user.expiry[:16] }}{% else %}{{ user.data_remaining }} MB{% endif %}</td>
+                    <td><a href="/delete-user/{{ user.code }}" class="btn-small btn-danger" onclick="return confirm('Remove?')">✖</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p>No active users.</p>
+        {% endif %}
+        <a href="/" class="btn">← Back</a>
+    </div>
+</body>
+</html>
