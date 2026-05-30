@@ -1,0 +1,27 @@
+# DM-BILLING-SYSTEM - WiFi Billing System
+
+A complete billing system for WiFi businesses.
+
+## Features
+- Sell time-based or data-based plans
+- Generate QR codes for WiFi login
+- Track active users
+- Sales reports
+- Staff management
+
+## Quick Start
+
+1. Clone the repository
+2. Install Python 3.8+
+3. Run `pip install -r requirements.txt`
+4. Run `python app.py`
+5. Open http://localhost:5000
+6. Login: admin / admin123
+
+## Deployment
+
+Can be deployed to Railway, Render, or any Python hosting platform.
+
+## License
+
+MIT
