@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>New Bill</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🎫 Sell WiFi</h1>
+        <form method="POST">
+            <label>Customer Name:</label>
+            <input type="text" name="customer_name" required>
+            <label>Plan Type:</label>
+            <select name="plan_type" id="planType" required>
+                <option value="time">Time-based (Hours)</option>
+                <option value="data">Data-based (MB)</option>
+            </select>
+            <div id="timeInput"><label>Hours:</label><input type="number" name="hours" value="1"></div>
+            <div id="dataInput" style="display:none"><label>Data (MB):</label><input type="number" name="data_mb" value="100"></div>
+            <label>Price ($):</label>
+            <input type="number" name="price" step="0.01" required>
+            <button type="submit" class="btn btn-primary">Generate</button>
+        </form>
+        <a href="/" class="btn">← Back</a>
+    </div>
+    <script>
+        document.getElementById('planType').onchange = function() {
+            document.getElementById('timeInput').style.display = this.value === 'time' ? 'block' : 'none';
+            document.getElementById('dataInput').style.display = this.value === 'data' ? 'block' : 'none';
+        };
+    </script>
+</body>
+</html>
